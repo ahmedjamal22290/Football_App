@@ -1,9 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
+import 'package:l/custom_widget/days_widget.dart';
+
+DateTime now = DateTime.now();
+Map<int, String> monthMap = {
+  1: 'Jan',
+  2: 'Feb',
+  3: 'Mar',
+  4: 'Apr',
+  5: 'May',
+  6: 'Jun',
+  7: 'Jul',
+  8: 'Aug',
+  9: 'Sep',
+  10: 'Oct',
+  11: 'Nov',
+  12: 'Dec'
+};
 
 class homePage extends StatelessWidget {
   const homePage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +69,7 @@ class homePage extends StatelessWidget {
       //     //   Spacer()
       //     // ],
       //     ),
+
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -70,49 +87,44 @@ class homePage extends StatelessWidget {
               child: SizedBox(
                 height: 50,
                 width: double.maxFinite,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: GlowText(
-                        'Yestrday',
-                        blurRadius: 25,
-                        glowColor: Colors.transparent,
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: GlowText(
-                        'Todoy',
-                        blurRadius: 25,
-                        // glowColor: Colors.transparent,
-                        style: TextStyle(
-                            fontSize: 25,
-                            color: Color(0xff73F590),
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
-                      child: GlowText(
-                        'Tomorrow',
-                        blurRadius: 25,
-                        glowColor: Colors.transparent,
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ],
-                ),
+                child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 17,
+                    itemBuilder: (context, index) {
+                      DateTime tmp = now.add(Duration(days: -1 + index));
+                      if (index == 0 || index == 1) {
+                        if (index == 0)
+                          return daysWidget(
+                              color: Colors.transparent, text: 'Yestrday');
+                        else
+                          return daysWidget(
+                            text: 'Todoy',
+                            textColor: Color(0xFF56E976),
+                          );
+                      }
+                      return daysWidget(
+                          text: '${monthMap[tmp.month]}.${tmp.day}');
+                    }),
               ),
-            )
+            ),
+            // Center(
+            //   child: SizedBox(
+            //     height: 50,
+            //     width: double.maxFinite,
+            //     child: ListView(
+            //       scrollDirection: Axis.horizontal,
+            //       children: [
+            //         daysWidget(color: Colors.transparent, text: 'Yestrday'),
+            //         daysWidget(
+            //           text:
+            //               '${monthMap[now.add(Duration(days: 1)).month]}.${now.add(Duration(days: 1)).day}',
+            //           textColor: Color(0xFF56E976),
+            //         ),
+            //         daysWidget(color: Colors.transparent, text: 'Tomorrow'),
+            //       ],
+            //     ),
+            //   ),
+            // )
           ],
         ),
       ),
