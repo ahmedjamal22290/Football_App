@@ -89,7 +89,7 @@ class homePage extends StatelessWidget {
                 width: double.maxFinite,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 17,
+                    itemCount: 9,
                     itemBuilder: (context, index) {
                       DateTime tmp = now.add(Duration(days: -1 + index));
                       if (index == 0 || index == 1) {
@@ -103,28 +103,89 @@ class homePage extends StatelessWidget {
                           );
                       }
                       return daysWidget(
+                          color: Colors.transparent,
                           text: '${monthMap[tmp.month]}.${tmp.day}');
                     }),
               ),
             ),
-            // Center(
-            //   child: SizedBox(
-            //     height: 50,
-            //     width: double.maxFinite,
-            //     child: ListView(
-            //       scrollDirection: Axis.horizontal,
-            //       children: [
-            //         daysWidget(color: Colors.transparent, text: 'Yestrday'),
-            //         daysWidget(
-            //           text:
-            //               '${monthMap[now.add(Duration(days: 1)).month]}.${now.add(Duration(days: 1)).day}',
-            //           textColor: Color(0xFF56E976),
-            //         ),
-            //         daysWidget(color: Colors.transparent, text: 'Tomorrow'),
-            //       ],
-            //     ),
-            //   ),
-            // )
+            Container(
+              margin: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.only(left: 5, right: 5, bottom: 15, top: 7),
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        const Color(0xFF303030),
+                        const Color(0xFF3A3D47),
+                      ]),
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(22),
+                      bottomRight: Radius.circular(22)),
+                  boxShadow: [
+                    BoxShadow(
+                        blurStyle: BlurStyle.outer,
+                        blurRadius: 50,
+                        color: const Color.fromARGB(176, 0, 0, 0))
+                  ]),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.flag,
+                        color: Colors.white,
+                      ),
+                      Text(
+                        'La Liga',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                  Divider(
+                    thickness: 0.2,
+                  ),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Image.network(
+                            "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
+                            scale: 10,
+                          ),
+                          Image.network(
+                            "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
+                            scale: 12,
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            'Real Madrid',
+                            style: TextStyle(fontSize: 22, color: Colors.white),
+                          ),
+                          Text(
+                            'Barchelona',
+                            style: TextStyle(fontSize: 22, color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      Spacer(),
+                      Text(
+                        '9:00 PM',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
