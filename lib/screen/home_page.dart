@@ -114,7 +114,7 @@ class homePage extends StatelessWidget {
             leagueSectionWidget(
               leagueIcon: Icons.flag,
               leagueName: 'La Liga',
-            )
+            ),
           ],
         ),
       ),

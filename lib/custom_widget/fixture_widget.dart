@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:l/models/fixture_model.dart';
 
 class fixtureWidget extends StatelessWidget {
-  const fixtureWidget({
-    super.key,
-    required this.awayTeam,
-    required this.awayTeamImage,
-    required this.homeTeam,
-    required this.homeTeamImage,
-    required this.matchTime,
-    required this.niOrMo,
-  });
-  String homeTeamImage, awayTeamImage, homeTeam, awayTeam, matchTime, niOrMo;
-
+  const fixtureWidget({super.key, required this.fixturemodel});
+  final fixtureModel fixturemodel;
+  // final DateTime dt = DateTime.parse(fixturemodel.matchTime);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,44 +12,56 @@ class fixtureWidget extends StatelessWidget {
         Column(
           children: [
             Image.network(
-              "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
-              scale: 10,
+              fixturemodel.homeTeamImage,
+              scale: 3,
             ),
             Image.network(
-              "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
-              scale: 12,
+              fixturemodel.awayTeamImage,
+              scale: 3,
             ),
           ],
         ),
-        Column(
-          children: [
-            Text(
-              'Real Madrid',
-              style: TextStyle(fontSize: 22, color: Colors.white),
-            ),
-            Text(
-              'Barchelona',
-              style: TextStyle(fontSize: 22, color: Colors.white),
-            ),
-          ],
+        Padding(
+          padding: const EdgeInsets.only(left: 10.0),
+          child: Column(
+            children: [
+              Text(
+                fixturemodel.homeTeam,
+                style: TextStyle(fontSize: 15, color: Colors.white),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 25.0),
+                child: Text(
+                  fixturemodel.awayTeam,
+                  style: TextStyle(fontSize: 15, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Spacer(),
+        Text(
+          fixturemodel.status,
+          style: TextStyle(
+              color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
         ),
         Spacer(),
         Column(
           children: [
             Text(
-              '9:00',
+              '${DateTime.parse(fixturemodel.matchTime).hour}:${DateTime.parse(fixturemodel.matchTime).minute}',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
                   fontWeight: FontWeight.bold),
             ),
             Text(
-              'PM',
+              DateTime.parse(fixturemodel.matchTime).hour > 12 ? 'PM' : 'AM',
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 15,
                   fontWeight: FontWeight.bold),
-            )
+            ),
           ],
         ),
       ],
