@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:l/custom_widget/days_widget.dart';
 import 'package:l/custom_widget/fixture_widget.dart';
+import 'package:l/custom_widget/league_section_widget.dart';
 import 'package:l/models/fixture_model.dart';
 
 DateTime now = DateTime.now();
@@ -110,58 +111,9 @@ class homePage extends StatelessWidget {
                     }),
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              padding: EdgeInsets.only(left: 5, right: 5, bottom: 15, top: 7),
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        const Color(0xFF303030),
-                        const Color(0xFF3A3D47),
-                      ]),
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(22),
-                      bottomRight: Radius.circular(22)),
-                  boxShadow: [
-                    BoxShadow(
-                        blurStyle: BlurStyle.outer,
-                        blurRadius: 50,
-                        color: const Color.fromARGB(176, 0, 0, 0))
-                  ]),
-              child: ListBody(
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.flag,
-                        color: Colors.white,
-                      ),
-                      Text(
-                        'La Liga',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
-                  Divider(
-                    thickness: 0.2,
-                  ),
-                  fixtureWidget(
-                    fixturemodel: fixtureModel(
-                        awayTeam: 'Barchelona',
-                        awayTeamImage:
-                            "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
-                        homeTeam: 'Real Madrid',
-                        homeTeamImage:
-                            "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
-                        matchTime: '9:00',
-                        PmOrAm: 'PM'),
-                  ),
-                ],
-              ),
+            leagueSectionWidget(
+              leagueIcon: Icons.flag,
+              leagueName: 'La Liga',
             )
           ],
         ),
