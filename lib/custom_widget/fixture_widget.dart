@@ -4,7 +4,6 @@ import 'package:l/models/fixture_model.dart';
 class fixtureWidget extends StatelessWidget {
   const fixtureWidget({super.key, required this.fixturemodel});
   final fixtureModel fixturemodel;
-  // final DateTime dt = DateTime.parse(fixturemodel.matchTime);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -49,7 +48,7 @@ class fixtureWidget extends StatelessWidget {
         Column(
           children: [
             Text(
-              '${DateTime.parse(fixturemodel.matchTime).hour}:${DateTime.parse(fixturemodel.matchTime).minute}',
+              getTime(fixturemodel.matchTime),
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -67,4 +66,8 @@ class fixtureWidget extends StatelessWidget {
       ],
     );
   }
+}
+
+String getTime(String time) {
+  return '${DateTime.parse(time).hour}:${DateTime.parse(time).minute == 0 ? '00' : DateTime.parse(time).minute}';
 }
