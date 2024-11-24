@@ -128,7 +128,7 @@ class homePage extends StatelessWidget {
                         blurRadius: 50,
                         color: const Color.fromARGB(176, 0, 0, 0))
                   ]),
-              child: Column(
+              child: ListBody(
                 children: [
                   Row(
                     children: [
@@ -147,48 +147,78 @@ class homePage extends StatelessWidget {
                   Divider(
                     thickness: 0.2,
                   ),
-                  Row(
-                    children: [
-                      Column(
-                        children: [
-                          Image.network(
-                            "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
-                            scale: 10,
-                          ),
-                          Image.network(
-                            "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
-                            scale: 12,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Real Madrid',
-                            style: TextStyle(fontSize: 22, color: Colors.white),
-                          ),
-                          Text(
-                            'Barchelona',
-                            style: TextStyle(fontSize: 22, color: Colors.white),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Text(
-                        '9:00 PM',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  )
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
+                  fixtureWidget(),
                 ],
               ),
             )
           ],
         ),
       ),
+    );
+  }
+}
+
+class fixtureWidget extends StatelessWidget {
+  const fixtureWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Column(
+          children: [
+            Image.network(
+              "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
+              scale: 10,
+            ),
+            Image.network(
+              "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
+              scale: 12,
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            Text(
+              'Real Madrid',
+              style: TextStyle(fontSize: 22, color: Colors.white),
+            ),
+            Text(
+              'Barchelona',
+              style: TextStyle(fontSize: 22, color: Colors.white),
+            ),
+          ],
+        ),
+        Spacer(),
+        Column(
+          children: [
+            Text(
+              '9:00',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'PM',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
+      ],
     );
   }
 }
