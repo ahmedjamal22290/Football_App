@@ -128,7 +128,7 @@ List<Widget> getListOfMatches(List<fixtureModel> matchesData) {
       thickness: 0.2,
     ),
   ];
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < matchesData.length; i++) {
     resul.add(fixtureWidget(fixturemodel: matchesData[i]));
     resul.add(Divider(
       thickness: 0.2,

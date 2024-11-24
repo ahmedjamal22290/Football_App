@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:l/models/fixture_model.dart';
+import 'package:l/screen/home_page.dart';
 
 class fixtureService {
   final Dio dio = Dio();
@@ -15,7 +16,11 @@ class fixtureService {
     Response response = await dio.get(http, options: options);
     Map<String, dynamic> jsonn = response.data;
     List<fixtureModel> results = [];
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < jsonn.length; i++) {
+      if (DateTime.parse(jsonn['response'][i]['fixture']['date']).day !=
+          now.day) {
+        break;
+      }
       results.add(fixtureModel(
           status: jsonn['response'][i]['fixture']['status']['long'],
           awayTeam: jsonn['response'][i]['teams']['away']['name'],
