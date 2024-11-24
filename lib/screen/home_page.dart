@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:l/custom_widget/days_widget.dart';
+import 'package:l/custom_widget/fixture_widget.dart';
+import 'package:l/models/fixture_model.dart';
 
 DateTime now = DateTime.now();
 Map<int, String> monthMap = {
@@ -147,78 +149,23 @@ class homePage extends StatelessWidget {
                   Divider(
                     thickness: 0.2,
                   ),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
-                  fixtureWidget(),
+                  fixtureWidget(
+                    fixturemodel: fixtureModel(
+                        awayTeam: 'Barchelona',
+                        awayTeamImage:
+                            "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
+                        homeTeam: 'Real Madrid',
+                        homeTeamImage:
+                            "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
+                        matchTime: '9:00',
+                        PmOrAm: 'PM'),
+                  ),
                 ],
               ),
             )
           ],
         ),
       ),
-    );
-  }
-}
-
-class fixtureWidget extends StatelessWidget {
-  const fixtureWidget({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          children: [
-            Image.network(
-              "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
-              scale: 10,
-            ),
-            Image.network(
-              "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
-              scale: 12,
-            ),
-          ],
-        ),
-        Column(
-          children: [
-            Text(
-              'Real Madrid',
-              style: TextStyle(fontSize: 22, color: Colors.white),
-            ),
-            Text(
-              'Barchelona',
-              style: TextStyle(fontSize: 22, color: Colors.white),
-            ),
-          ],
-        ),
-        Spacer(),
-        Column(
-          children: [
-            Text(
-              '9:00',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            ),
-            Text(
-              'PM',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
-            )
-          ],
-        ),
-      ],
     );
   }
 }
