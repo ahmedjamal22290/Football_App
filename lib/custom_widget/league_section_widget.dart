@@ -10,7 +10,7 @@ class leagueSectionWidget extends StatelessWidget {
   const leagueSectionWidget(
       {super.key, required this.leagueIcon, required this.leagueName});
   final String leagueName;
-  final IconData leagueIcon;
+  final String leagueIcon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,10 +40,6 @@ class leagueSectionWidget extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(
-                      leagueIcon,
-                      color: Colors.white,
-                    ),
                     Text(
                       leagueName,
                       style: TextStyle(
@@ -66,38 +62,6 @@ class leagueSectionWidget extends StatelessWidget {
           } else if (state is matchesLoaded) {
             return ListBody(
               children: getListOfMatches(state.listFix),
-              // children: [
-              //   Row(
-              //     children: [
-              //       Icon(
-              //         leagueIcon,
-              //         color: Colors.white,
-              //       ),
-              //       Text(
-              //         leagueName,
-              //         style: TextStyle(
-              //           color: Colors.white,
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              //   Divider(
-              //     thickness: 0.2,
-              //   ),
-              //   fixtureWidget(
-              //     fixturemodel: state.listFix[2],
-              //     // fixturemodel: fixtureModel(
-              //     //     status: 'NS',
-              //     //     awayTeam: 'Barchelona',
-              //     //     awayTeamImage:
-              //     //         "https://apkdownloadgame.com/wp-content/uploads/2022/04/Barcelona-Logo-2023.png",
-              //     //     homeTeam: 'Real Madrid',
-              //     //     homeTeamImage:
-              //     //         "https://th.bing.com/th/id/OIP.rZBmj3ER6WuvkyX8EDAa2QAAAA?w=400&h=400&rs=1&pid=ImgDetMain",
-              //     //     matchTime: '9:00',
-              //     //     PmOrAm: 'PM'),
-              //   ),
-              // ],
             );
           } else {
             return Text('data');
@@ -106,34 +70,43 @@ class leagueSectionWidget extends StatelessWidget {
       ),
     );
   }
-}
 
-List<Widget> getListOfMatches(List<fixtureModel> matchesData) {
-  List<Widget> resul = [
-    Row(
-      children: [
-        Icon(
-          Icons.flag,
-          color: Colors.white,
-        ),
-        Text(
-          'La Liga',
-          style: TextStyle(
-            color: Colors.white,
+  List<Widget> getListOfMatches(List<fixtureModel> matchesData) {
+    List<Widget> resul = [
+      Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: CircleAvatar(
+              backgroundColor: Colors.white,
+              radius: 22,
+              child: Image.network(
+                colorBlendMode: BlendMode.dstATop,
+                leagueIcon,
+                scale: 5,
+              ),
+            ),
           ),
-        )
-      ],
-    ),
-    Divider(
-      thickness: 0.2,
-    ),
-  ];
-  for (int i = 0; i < matchesData.length; i++) {
-    resul.add(fixtureWidget(fixturemodel: matchesData[i]));
-    resul.add(Divider(
-      thickness: 0.2,
-      endIndent: 40,
-    ));
+          Text(
+            leagueName,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.white,
+            ),
+          )
+        ],
+      ),
+      Divider(
+        thickness: 0.2,
+      ),
+    ];
+    for (int i = 0; i < matchesData.length; i++) {
+      resul.add(fixtureWidget(fixturemodel: matchesData[i]));
+      resul.add(Divider(
+        thickness: 0.2,
+        endIndent: 40,
+      ));
+    }
+    return resul;
   }
-  return resul;
 }

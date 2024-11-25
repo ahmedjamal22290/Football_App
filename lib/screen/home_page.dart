@@ -26,53 +26,6 @@ class homePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //     elevation: 0,
-      //     backgroundColor: const Color(0xFF383838),
-      //     actions: [
-      //       Expanded(
-      //         child: ListView(
-      //           scrollDirection: Axis.horizontal,
-      //           children: [
-      //             Text(
-      //               'data',
-      //               style: TextStyle(fontSize: 40, color: Colors.white),
-      //             ),
-      //             Text(
-      //               'data',
-      //               style: TextStyle(fontSize: 40, color: Colors.white),
-      //             ),
-      //             Text(
-      //               'data',
-      //               style: TextStyle(fontSize: 40, color: Colors.white),
-      //             ),
-      //             Text(
-      //               'data',
-      //               style: TextStyle(fontSize: 40, color: Colors.white),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //     ]
-      //     // actions: [
-      //     //   GradientText(
-      //     //     'FOOT',
-      //     //     gradientDirection: GradientDirection.btt,
-      //     //     gradientType: GradientType.linear,
-      //     //     colors: [const Color.fromARGB(255, 63, 63, 63), Colors.white],
-      //     //     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-      //     //   ),
-      //     //   Text(
-      //     //     ' -App-',
-      //     //     style: TextStyle(
-      //     //         color: Colors.tealAccent,
-      //     //         fontSize: 20,
-      //     //         fontWeight: FontWeight.bold),
-      //     //   ),
-      //     //   Spacer()
-      //     // ],
-      //     ),
-
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -112,8 +65,9 @@ class homePage extends StatelessWidget {
               ),
             ),
             leagueSectionWidget(
-              leagueIcon: Icons.flag,
-              leagueName: 'La Liga',
+              leagueIcon:
+                  "https://media.api-sports.io//football//leagues//135.png",
+              leagueName: 'Seria A',
             ),
           ],
         ),

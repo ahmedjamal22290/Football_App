@@ -8,9 +8,10 @@ class fixtureService {
     'x-rapidapi-key': '8ac678ba71205aacaad685d3d045fff8',
     'x-rapidapi-host': 'v3.football.api-sports.io',
   });
+  String league = '135';
   String baseUrl = "https://v3.football.api-sports.io/fixtures?";
   Future<List<fixtureModel>> getFixture() async {
-    String paraQuery = "next=20&league=140";
+    String paraQuery = "next=20&league=${league}";
     String http = "${baseUrl}${paraQuery}";
 
     Response response = await dio.get(http, options: options);

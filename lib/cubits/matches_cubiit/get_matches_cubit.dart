@@ -10,6 +10,7 @@ class getMatchesCubit extends Cubit<fixturesStates> {
   late List<fixtureModel> matchesList;
   getMatches() async {
     matchesList = await fixtureService().getFixture();
+
     emit(matchesLoaded(listFix: matchesList));
   }
 }
