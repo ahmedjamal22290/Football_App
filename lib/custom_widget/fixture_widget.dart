@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:l/models/fixture_model.dart';
+import 'package:l/screen/fixture_detiles_page.dart';
 
 class fixtureWidget extends StatelessWidget {
   const fixtureWidget({super.key, required this.fixturemodel});
@@ -7,7 +8,12 @@ class fixtureWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (BuildContext context) {
+          return fixtureDetailsPage(MatchDetails: fixturemodel);
+        }));
+      },
       style: ButtonStyle(
         backgroundColor: WidgetStatePropertyAll(Colors.transparent),
         shadowColor: WidgetStatePropertyAll(Colors.transparent),
