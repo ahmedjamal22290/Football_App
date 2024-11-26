@@ -10,9 +10,12 @@ class fixtureWidget extends StatelessWidget {
       children: [
         Column(
           children: [
-            Image.network(
-              fixturemodel.homeTeamImage,
-              scale: 3,
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10.0),
+              child: Image.network(
+                fixturemodel.homeTeamImage,
+                scale: 3,
+              ),
             ),
             Image.network(
               fixturemodel.awayTeamImage,
@@ -29,7 +32,7 @@ class fixtureWidget extends StatelessWidget {
                 style: TextStyle(fontSize: 15, color: Colors.white),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 25.0),
+                padding: const EdgeInsets.only(top: 32.0),
                 child: Text(
                   fixturemodel.awayTeam,
                   style: TextStyle(fontSize: 15, color: Colors.white),

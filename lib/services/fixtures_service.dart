@@ -5,13 +5,13 @@ import 'package:l/screen/home_page.dart';
 class fixtureService {
   final Dio dio = Dio();
   Options options = Options(headers: {
-    'x-rapidapi-key': '8ac678ba71205aacaad685d3d045fff8',
+    'x-rapidapi-key': '244fdb67ac15551d29bf32f510963b89',
     'x-rapidapi-host': 'v3.football.api-sports.io',
   });
-  String league = '135';
+  String league = '2';
   String baseUrl = "https://v3.football.api-sports.io/fixtures?";
-  Future<List<fixtureModel>> getFixture() async {
-    String paraQuery = "next=20&league=${league}";
+  Future<List<fixtureModel>> getFixture(String leagueID) async {
+    String paraQuery = "next=20&league=${leagueID}";
     String http = "${baseUrl}${paraQuery}";
 
     Response response = await dio.get(http, options: options);
@@ -23,6 +23,7 @@ class fixtureService {
         break;
       }
       results.add(fixtureModel(
+          leagueImage: jsonn['response'][i]['league']['logo'],
           status: jsonn['response'][i]['fixture']['status']['long'],
           awayTeam: jsonn['response'][i]['teams']['away']['name'],
           awayTeamImage: jsonn['response'][i]['teams']['away']['logo'],

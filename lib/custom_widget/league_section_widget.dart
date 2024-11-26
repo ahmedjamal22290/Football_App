@@ -7,10 +7,8 @@ import 'package:l/models/fixture_model.dart';
 import 'package:l/services/fixtures_service.dart';
 
 class leagueSectionWidget extends StatelessWidget {
-  const leagueSectionWidget(
-      {super.key, required this.leagueIcon, required this.leagueName});
+  const leagueSectionWidget({super.key, required this.leagueName});
   final String leagueName;
-  final String leagueIcon;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,7 +80,7 @@ class leagueSectionWidget extends StatelessWidget {
               radius: 22,
               child: Image.network(
                 colorBlendMode: BlendMode.dstATop,
-                leagueIcon,
+                matchesData[0].leagueImage,
                 scale: 5,
               ),
             ),

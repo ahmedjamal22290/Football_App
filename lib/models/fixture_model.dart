@@ -5,9 +5,11 @@ class fixtureModel {
       homeTeam,
       awayTeam,
       matchTime,
-      PmOrAm;
+      PmOrAm,
+      leagueImage;
   fixtureModel(
-      {required this.homeTeam,
+      {required this.leagueImage,
+      required this.homeTeam,
       required this.homeTeamImage,
       required this.awayTeam,
       required this.awayTeamImage,

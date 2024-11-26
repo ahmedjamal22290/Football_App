@@ -4,12 +4,13 @@ import 'package:l/models/fixture_model.dart';
 import 'package:l/services/fixtures_service.dart';
 
 class getMatchesCubit extends Cubit<fixturesStates> {
-  getMatchesCubit() : super(thereIsNoMatches()) {
-    getMatches();
+  getMatchesCubit({required this.leagueID}) : super(thereIsNoMatches()) {
+    getMatches(leagueID);
   }
+  String leagueID;
   late List<fixtureModel> matchesList;
-  getMatches() async {
-    matchesList = await fixtureService().getFixture();
+  getMatches(String leagueId) async {
+    matchesList = await fixtureService().getFixture(leagueId);
 
     emit(matchesLoaded(listFix: matchesList));
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_glow/flutter_glow.dart';
+import 'package:l/cubits/matches_cubiit/get_matches_cubit.dart';
 import 'package:l/custom_widget/days_widget.dart';
 import 'package:l/custom_widget/fixture_widget.dart';
 import 'package:l/custom_widget/league_section_widget.dart';
@@ -64,10 +66,17 @@ class homePage extends StatelessWidget {
                     }),
               ),
             ),
-            leagueSectionWidget(
-              leagueIcon:
-                  "https://media.api-sports.io//football//leagues//135.png",
-              leagueName: 'Seria A',
+            BlocProvider(
+              create: (context) => getMatchesCubit(leagueID: '2'),
+              child: leagueSectionWidget(
+                leagueName: 'Champions League',
+              ),
+            ),
+            BlocProvider(
+              create: (context) => getMatchesCubit(leagueID: '17'),
+              child: leagueSectionWidget(
+                leagueName: 'AFC',
+              ),
             ),
           ],
         ),

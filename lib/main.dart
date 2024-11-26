@@ -15,12 +15,9 @@ class footApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getMatchesCubit(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: homePage(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: homePage(),
     );
   }
 }
