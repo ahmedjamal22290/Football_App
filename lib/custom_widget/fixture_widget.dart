@@ -6,67 +6,74 @@ class fixtureWidget extends StatelessWidget {
   final fixtureModel fixturemodel;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: Image.network(
-                fixturemodel.homeTeamImage,
-                scale: 3,
-              ),
-            ),
-            Image.network(
-              fixturemodel.awayTeamImage,
-              scale: 3,
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 10.0),
-          child: Column(
+    return ElevatedButton(
+      onPressed: () {},
+      style: ButtonStyle(
+        backgroundColor: WidgetStatePropertyAll(Colors.transparent),
+        shadowColor: WidgetStatePropertyAll(Colors.transparent),
+      ),
+      child: Row(
+        children: [
+          Column(
             children: [
-              Text(
-                fixturemodel.homeTeam,
-                style: TextStyle(fontSize: 15, color: Colors.white),
-              ),
               Padding(
-                padding: const EdgeInsets.only(top: 32.0),
-                child: Text(
-                  fixturemodel.awayTeam,
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Image.network(
+                  fixturemodel.homeTeamImage,
+                  scale: 3,
                 ),
+              ),
+              Image.network(
+                fixturemodel.awayTeamImage,
+                scale: 3,
               ),
             ],
           ),
-        ),
-        Spacer(),
-        Text(
-          fixturemodel.status,
-          style: TextStyle(
-              color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-        ),
-        Spacer(),
-        Column(
-          children: [
-            Text(
-              getTime(fixturemodel.matchTime),
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold),
+          Padding(
+            padding: const EdgeInsets.only(left: 10.0),
+            child: Column(
+              children: [
+                Text(
+                  fixturemodel.homeTeam,
+                  style: TextStyle(fontSize: 15, color: Colors.white),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 32.0),
+                  child: Text(
+                    fixturemodel.awayTeam,
+                    style: TextStyle(fontSize: 15, color: Colors.white),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              DateTime.parse(fixturemodel.matchTime).hour > 12 ? 'PM' : 'AM',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ],
+          ),
+          Spacer(),
+          Text(
+            fixturemodel.status,
+            style: TextStyle(
+                color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
+          ),
+          Spacer(),
+          Column(
+            children: [
+              Text(
+                getTime(fixturemodel.matchTime),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                DateTime.parse(fixturemodel.matchTime).hour > 12 ? 'PM' : 'AM',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
