@@ -163,13 +163,61 @@ class fixtureDetailsPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'Home Team : ${MatchDetails.homeTeam}',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 12),
+                            padding: EdgeInsets.only(left: 10),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 26, 26, 26),
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(12),
+                                bottomRight: Radius.circular(22),
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Home Team : ',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color(0xFF0BB965),
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  MatchDetails.homeTeam,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
-                          Text(
-                            'Home Team : ${MatchDetails.awayTeam}',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          Container(
+                            margin: EdgeInsets.only(bottom: 12),
+                            padding: EdgeInsets.only(left: 10),
+                            height: 40,
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 26, 26, 26),
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(12),
+                                bottomRight: Radius.circular(22),
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Text(
+                                  'Away  Team : ',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Color.fromARGB(255, 185, 37, 11),
+                                      fontSize: 18),
+                                ),
+                                Text(
+                                  MatchDetails.awayTeam,
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 18),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
