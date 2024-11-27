@@ -11,7 +11,9 @@ class getMatchesCubit extends Cubit<fixturesStates> {
   late List<fixtureModel> matchesList;
   getMatches(String leagueId) async {
     matchesList = await fixtureService().getFixture(leagueId);
-
-    emit(matchesLoaded(listFix: matchesList));
+    if (matchesList.isEmpty) {
+      emit(thereIsNoMatches());
+    } else
+      emit(matchesLoaded(listFix: matchesList));
   }
 }

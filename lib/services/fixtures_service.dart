@@ -14,24 +14,29 @@ class fixtureService {
     String paraQuery = "next=20&league=${leagueID}";
     String http = "${baseUrl}${paraQuery}";
 
-    Response response = await dio.get(http, options: options);
-    Map<String, dynamic> jsonn = response.data;
-    List<fixtureModel> results = [];
-    for (int i = 0; i < jsonn.length; i++) {
-      if (DateTime.parse(jsonn['response'][i]['fixture']['date']).day !=
-          now.day) {
-        break;
+    try {
+      Response response = await dio.get(http, options: options);
+      Map<String, dynamic> jsonn = response.data;
+      List<fixtureModel> results = [];
+
+      for (int i = 0; i < jsonn.length + 3; i++) {
+        if (DateTime.parse(jsonn['response'][i]['fixture']['date']).day !=
+            now.day) {
+          break;
+        }
+        results.add(fixtureModel(
+            leagueImage: jsonn['response'][i]['league']['logo'],
+            status: jsonn['response'][i]['fixture']['status']['long'],
+            awayTeam: jsonn['response'][i]['teams']['away']['name'],
+            awayTeamImage: jsonn['response'][i]['teams']['away']['logo'],
+            homeTeam: jsonn['response'][i]['teams']['home']['name'],
+            homeTeamImage: jsonn['response'][i]['teams']['home']['logo'],
+            matchTime: jsonn['response'][i]['fixture']['date'],
+            PmOrAm: jsonn['response'][i]['fixture']['date']));
       }
-      results.add(fixtureModel(
-          leagueImage: jsonn['response'][i]['league']['logo'],
-          status: jsonn['response'][i]['fixture']['status']['long'],
-          awayTeam: jsonn['response'][i]['teams']['away']['name'],
-          awayTeamImage: jsonn['response'][i]['teams']['away']['logo'],
-          homeTeam: jsonn['response'][i]['teams']['home']['name'],
-          homeTeamImage: jsonn['response'][i]['teams']['home']['logo'],
-          matchTime: jsonn['response'][i]['fixture']['date'],
-          PmOrAm: jsonn['response'][i]['fixture']['date']));
+      return results;
+    } catch (e) {
+      return [];
     }
-    return results;
   }
 }

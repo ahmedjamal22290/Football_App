@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:l/models/fixture_model.dart';
-import 'package:l/screen/fixture_detiles_page.dart';
+import 'package:l/screen/fixture_details_page.dart';
 
 class fixtureWidget extends StatelessWidget {
   const fixtureWidget({super.key, required this.fixturemodel});

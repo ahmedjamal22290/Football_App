@@ -72,12 +72,12 @@ class homePage extends StatelessWidget {
                 leagueName: 'Champions League',
               ),
             ),
-            BlocProvider(
-              create: (context) => getMatchesCubit(leagueID: '0'),
-              child: leagueSectionWidget(
-                leagueName: 'AFC',
-              ),
-            ),
+            // BlocProvider(
+            //   create: (context) => getMatchesCubit(leagueID: '17'),
+            //   child: leagueSectionWidget(
+            //     leagueName: 'AFC',
+            //   ),
+            // ),
           ],
         ),
       ),

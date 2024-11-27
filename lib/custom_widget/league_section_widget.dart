@@ -80,8 +80,7 @@ class leagueSectionWidget extends StatelessWidget {
               radius: 22,
               child: Image.network(
                 colorBlendMode: BlendMode.dstATop,
-                matchesData[0].leagueImage ??
-                    'https://th.bing.com/th/id/OIP.x4nIPTx5-SyEnc16SZ0HrAAAAA?rs=1&pid=ImgDetMain',
+                matchesData[0].leagueImage,
                 scale: 5,
               ),
             ),
