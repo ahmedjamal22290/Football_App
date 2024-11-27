@@ -156,31 +156,39 @@ class fixtureDetailsPage extends StatelessWidget {
                 ),
               ),
               Expanded(
+                child: Transform.translate(
+                  offset: Offset(0, -80),
                   child: TabBarView(
-                children: [
-                  // Preview Content
-                  Center(
-                    child: Text(
-                      'Preview Content',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Home Team : ${MatchDetails.homeTeam}',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                          Text(
+                            'Home Team : ${MatchDetails.awayTeam}',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      Center(
+                        child: Text(
+                          'Line Up Content',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                      Center(
+                        child: Text(
+                          'News Content',
+                          style: TextStyle(color: Colors.white, fontSize: 18),
+                        ),
+                      ),
+                    ],
                   ),
-                  // Line Up Content
-                  Center(
-                    child: Text(
-                      'Line Up Content',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ),
-                  // News Content
-                  Center(
-                    child: Text(
-                      'News Content',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                  ),
-                ],
-              ))
+                ),
+              )
             ],
           ),
         ),
